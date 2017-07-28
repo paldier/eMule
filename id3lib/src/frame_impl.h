@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: frame_impl.h,v 1.6 2002/08/10 10:50:31 t1mpy Exp $
+// $Id: frame_impl.h,v 1.2 2007/06/02 20:17:32 pindakaasmod Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug

@@ -1,4 +1,4 @@
-// $Id: test_unicode.cpp,v 1.8 2002/06/29 17:26:18 t1mpy Exp $
+// $Id: test_unicode.cpp,v 1.1 2007/11/12 21:33:01 pindakaasmod Exp $
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>

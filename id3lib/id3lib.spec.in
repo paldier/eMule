@@ -1,4 +1,4 @@
-# $Id: id3lib.spec.in,v 1.27 2002/11/02 18:03:27 t1mpy Exp $
+# $Id: id3lib.spec.in,v 1.1 2007/11/12 21:32:38 pindakaasmod Exp $
 
 %define name    @PACKAGE@
 %define	version	@VERSION@

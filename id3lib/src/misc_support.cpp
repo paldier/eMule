@@ -1,4 +1,4 @@
-// $Id: misc_support.cpp,v 1.39 2002/09/19 10:20:45 t1mpy Exp $
+// $Id: misc_support.cpp,v 1.4 2008/01/15 11:20:39 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -32,6 +32,9 @@
 //#include "field.h"
 #include "id3/utils.h" // has <config.h> "id3/id3lib_streams.h" "id3/globals.h" "id3/id3lib_strings.h"
 
+#ifdef min
+#undef min
+#endif
 //using namespace dami;
 
 char *ID3_GetString(const ID3_Frame *frame, ID3_FieldID fldName)

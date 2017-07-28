@@ -1,4 +1,4 @@
-// $Id: tag_parse_lyrics3.cpp,v 1.35 2002/10/04 08:52:23 t1mpy Exp $
+// $Id: tag_parse_lyrics3.cpp,v 1.4 2008/01/15 11:20:41 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -75,7 +75,7 @@ namespace
   uint32 readTimeStamp(ID3_Reader& reader)
   {
     reader.skipChars(1);
-    size_t sec = readIntegerString(reader, 2) * 60;
+    uint32 sec = readIntegerString(reader, 2) * 60;
     reader.skipChars(1);
     sec += readIntegerString(reader, 2);
     reader.skipChars(1);
@@ -93,7 +93,7 @@ namespace
     size_t index = 0;
     while (!reader.atEnd())
     {
-      ID3_Reader::char_type ch = reader.readChar();
+      ID3_Reader::char_type ch = static_cast<ID3_Reader::char_type>(reader.readChar());
       if (ch == text[index])
       {
         index++;
@@ -122,7 +122,7 @@ namespace
     while (!reader.atEnd())
     {
       bool lf = false;
-      size_t ms = 0;
+      uint32 ms = 0;
       size_t count = 0;
       while (isTimeStamp(reader))
       {
@@ -138,7 +138,7 @@ namespace
       }
       while (!reader.atEnd() && !isTimeStamp(reader))
       {
-        ID3_Reader::char_type ch = reader.readChar();
+        ID3_Reader::char_type ch = static_cast<ID3_Reader::char_type>(reader.readChar());
         if (0x0A == ch && (reader.atEnd() || isTimeStamp(reader)))
         {
           lf = true;

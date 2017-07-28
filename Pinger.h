@@ -100,9 +100,10 @@
 #define MAX_IP_STATUS IP_GENERAL_FAILURE
 #define IP_PENDING (IP_STATUS_BASE + 255)
 
-typedef HANDLE WINAPI IcmpCreateFile(VOID); /* INVALID_HANDLE_VALUE on error */
+typedef HANDLE WINAPI IcmpCreateFile(); /* INVALID_HANDLE_VALUE on error */
 typedef BOOL WINAPI IcmpCloseHandle(HANDLE IcmpHandle); /* FALSE on error */
 
+#if _MSC_VER<1600 	   //ipexport.h
 /* Note 2: For the most part, you can refer to RFC 791 for detials 
 * on how to fill in values for the IP option information structure. 
 */
@@ -128,13 +129,20 @@ typedef struct icmp_echo_reply {
     void FAR *Data; 	/* reply data buffer */
     struct ip_option_information Options; /* reply options */
 } ICMPECHO, *PICMPECHO, FAR *LPICMPECHO;
-
+#else
+//typedef struct ip_option_information IPINFO, *PIPINFO, FAR *LPIPINFO;
+//typedef struct icmp_echo_reply ICMPECHO, *PICMPECHO, FAR *LPICMPECHO;
+#endif
 typedef DWORD WINAPI IcmpSendEcho(
     HANDLE IcmpHandle, 	/* handle returned from IcmpCreateFile() */
     u_long DestAddress, /* destination IP address (in network order) */
     LPVOID RequestData, /* pointer to buffer to send */
     WORD RequestSize,	/* length of data in buffer */
+#if _MSC_VER < 1600
     LPIPINFO RequestOptns,  /* see Note 2 */
+#else
+	PIP_OPTION_INFORMATION RequestOptns,  /* see Note 2 */
+#endif
     LPVOID ReplyBuffer, /* see Note 1 */
     DWORD ReplySize, 	/* length of reply (must allow at least 1 reply) */
     DWORD Timeout 	/* time in milliseconds to wait for reply */
@@ -216,23 +224,26 @@ public:
 
     PingStatus Ping(uint32 lAddr, uint32 ttl = DEFAULT_TTL, bool doLog = false, bool useUdp = false);
 
-    void PIcmpErr(int nICMPErr);
+    static void PIcmpErr(int nICMPErr);
 
 private:
-    void DisplayErr(int nWSAErr);
+//    void DisplayErr(int nWSAErr);
 
     bool udpStarted;
 
     IcmpCreateFile* lpfnIcmpCreateFile;
     IcmpCloseHandle* lpfnIcmpCloseHandle;
     IcmpSendEcho* lpfnIcmpSendEcho;
-    PingStatus Pinger::PingUDP(uint32 lAddr, uint32 ttl, bool doLog);
-    PingStatus Pinger::PingICMP(uint32 lAddr, uint32 ttl, bool doLog);
+    PingStatus PingUDP(uint32 lAddr, uint32 ttl, bool doLog);
+    PingStatus PingICMP(uint32 lAddr, uint32 ttl, bool doLog);
 
     HANDLE hICMP;
     HMODULE hICMP_DLL; // PENDING: was HANDLE
+#if _MSC_VER<1600
     IPINFO stIPInfo;
-
+#else
+	IP_OPTION_INFORMATION stIPInfo;
+#endif
     SOCKET us;          // UDP socket to send requests
     SOCKET is;          // raw ICMP socket to catch responses
 };

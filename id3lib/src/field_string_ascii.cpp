@@ -1,4 +1,4 @@
-// $Id: field_string_ascii.cpp,v 1.29 2003/03/02 14:23:58 t1mpy Exp $
+// $Id: field_string_ascii.cpp,v 1.4 2008/01/15 11:20:37 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -27,6 +27,10 @@
 #include "field_impl.h"
 #include "id3/utils.h" // has <config.h> "id3/id3lib_streams.h" "id3/globals.h" "id3/id3lib_strings.h"
 #include "io_helpers.h"
+
+#ifdef min
+#undef min
+#endif
 
 using namespace dami;
 

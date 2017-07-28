@@ -137,10 +137,11 @@
 // Dec Alpha cxx, HP-UX CC and SGI CC.
 // The trivial "if" statement provides the correct scoping to the 
 // for loop
-
+#if _MSC_VER<=1600
 #ifdef CXX_HAS_BUGGY_FOR_LOOPS
 /* #undef for */
 #define for if(1) for
+#endif
 #endif
 
 //

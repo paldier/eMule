@@ -1,4 +1,4 @@
-// $Id: io_helpers.cpp,v 1.13 2002/07/02 22:13:56 t1mpy Exp $
+// $Id: io_helpers.cpp,v 1.4 2008/01/15 11:20:39 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -37,7 +37,7 @@ String io::readString(ID3_Reader& reader)
   String str;
   while (!reader.atEnd())
   {
-    ID3_Reader::char_type ch = reader.readChar();
+    ID3_Reader::char_type ch = static_cast<ID3_Reader::char_type>(reader.readChar());
     if (ch == '\0')
     {
       break;
@@ -111,13 +111,13 @@ namespace
       return false;
     }
     io::ExitTrigger et(reader);
-    ch1 = reader.readChar();
+    ch1 = static_cast<ID3_Reader::char_type>(reader.readChar());
     if (reader.atEnd())
     {
       return false;
     }
     et.release();
-    ch2 = reader.readChar();
+    ch2 = static_cast<ID3_Reader::char_type>(reader.readChar());
     return true;
   }
 }
@@ -249,7 +249,7 @@ String io::readTrailingSpaces(ID3_Reader& reader, size_t len)
   spaces.reserve(len);
   while (!wr.atEnd())
   {
-    ID3_Reader::char_type ch = wr.readChar();
+    ID3_Reader::char_type ch = static_cast<ID3_Reader::char_type>(wr.readChar());
     if (ch == '\0' || ch == ' ')
     {
       spaces += ch;

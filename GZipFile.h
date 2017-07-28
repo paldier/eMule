@@ -16,7 +16,7 @@
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #pragma once
 
-typedef void* gzFile;
+typedef struct gzFile_s *gzFile;
 
 class CGZIPFile
 {

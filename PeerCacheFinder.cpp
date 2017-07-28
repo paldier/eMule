@@ -25,7 +25,7 @@
 #pragma warning(disable:4244) // conversion from 'type1' to 'type2', possible loss of data
 #pragma warning(disable:4100) // unreferenced formal parameter
 #pragma warning(disable:4702) // unreachable code
-#include <crypto51/rsa.h>
+#include <cryptopp/rsa.h>
 #pragma warning(default:4702) // unreachable code
 #pragma warning(default:4100) // unreferenced formal parameter
 #pragma warning(default:4244) // conversion from 'type1' to 'type2', possible loss of data
@@ -669,7 +669,8 @@ bool CPCValditeThread::Valdite(){
 				rsa.SetModulus(n);
 				Integer result = rsa.ApplyFunction(m);
 				uchar aucResult[SIGNATURELENGTH];
-				if(result.Encode(aucResult, SIGNATURELENGTH)){
+				result.Encode(aucResult, SIGNATURELENGTH);
+				{
 					uchar aucHash1[16];
 					for (int i = 0; i != 16; i++)
 						aucHash1[i] = aucResult[(SIGNATURELENGTH-1)-i]; 

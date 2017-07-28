@@ -1,4 +1,4 @@
-// $Id: helpers.cpp,v 1.12 2002/09/21 17:23:32 t1mpy Exp $
+// $Id: helpers.cpp,v 1.4 2008/01/15 11:20:38 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -356,11 +356,11 @@ size_t id3::v2::getTrackNum(const ID3_TagImpl& tag)
 ID3_Frame* id3::v2::setTrack(ID3_TagImpl& tag, uchar trk, uchar ttl)
 {
   ID3_Frame* frame = NULL;
-  String track = toString((size_t)trk);
+  String track = toString((uint32)trk);
   if (ttl > 0)
   {
     track += "/";
-    track += toString((size_t)ttl);
+    track += toString((uint32)ttl);
   }
   setFrameText(tag, ID3FID_TRACKNUM, track);
 

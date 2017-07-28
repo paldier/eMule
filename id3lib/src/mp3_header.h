@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: mp3_header.h,v 1.4 2002/11/02 17:48:51 t1mpy Exp $
+// $Id: mp3_header.h,v 1.2 2007/06/02 20:17:33 pindakaasmod Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 2002 Thijmen Klok (thijmen@id3lib.org)

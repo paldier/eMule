@@ -14,7 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //  
-// $Id: demo_info.cpp,v 1.32 2002/07/28 21:53:56 t1mpy Exp $
+// $Id: demo_info.cpp,v 1.2 2008/05/14 09:21:36 pindakaasmod Exp $
 
 
 #ifdef HAVE_CONFIG_H
@@ -33,7 +33,7 @@ using namespace dami;
 using std::cout;
 using std::endl;
 
-static String VERSION_NUMBER = "$Revision: 1.32 $";
+static String VERSION_NUMBER = "$Revision: 1.2 $";
 
 void PrintUsage(const char *sName)
 {

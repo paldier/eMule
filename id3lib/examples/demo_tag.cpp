@@ -1,4 +1,4 @@
-// $Id: demo_tag.cpp,v 1.15 2002/06/29 17:18:35 t1mpy Exp $
+// $Id: demo_tag.cpp,v 1.2 2008/05/14 09:21:36 pindakaasmod Exp $
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
@@ -16,7 +16,7 @@
 using std::cout;
 using std::endl;
 
-static const char* VERSION_NUMBER = "$Revision: 1.15 $";
+static const char* VERSION_NUMBER = "$Revision: 1.2 $";
 
 void PrintUsage(const char *sName)
 {

@@ -1,4 +1,4 @@
-// $Id: tag_file.cpp,v 1.43 2003/03/02 14:14:08 t1mpy Exp $
+// $Id: tag_file.cpp,v 1.4 2008/01/15 11:20:40 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -51,7 +51,7 @@ static int truncate(const char *path, size_t length)
   int result = -1;
   HANDLE fh;
 
-  fh = ::CreateFile(path,
+  fh = ::CreateFileA(path,
                     GENERIC_WRITE | GENERIC_READ,
                     0,
                     NULL,
@@ -425,7 +425,7 @@ flags_t ID3_TagImpl::Strip(flags_t ulTagFlag)
       }
       if (nBytesRead > 0)
       {
-        long offset = nBytesRead + this->GetPrependedBytes();
+        off_t offset = nBytesRead + this->GetPrependedBytes();
         file.seekp(-offset, ios::cur);
         file.write((char *)aucBuffer, nBytesRead);
         file.seekg(this->GetPrependedBytes(), ios::cur);

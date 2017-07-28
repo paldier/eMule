@@ -617,7 +617,7 @@ void CMMServer::PreviewFinished(CxImage** imgFrames, uint8 nCount){
 			return;
 		}
 		BYTE* abyResultBuffer = NULL;
-		long nResultSize = 0;
+		int32_t nResultSize = 0;
 		if (!cur_frame->Encode(abyResultBuffer, nResultSize, CXIMAGE_FORMAT_PNG)){
 			ASSERT ( false );			
 			return;

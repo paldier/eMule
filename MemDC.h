@@ -24,7 +24,7 @@
 // flicker free drawing.
 #pragma once
 
-class CMemDC : public CDC
+class CMemoryDC : public CDC
 {
 private:
 	CBitmap		m_bitmap;		// Offscreen bitmap
@@ -36,7 +36,7 @@ private:
 	bool		m_bFlushed;
 
 public:
-	CMemDC(CDC *pDC, LPCRECT pRect = NULL, COLORREF crBackground = CLR_DEFAULT)
+	CMemoryDC(CDC *pDC, LPCRECT pRect = NULL, COLORREF crBackground = CLR_DEFAULT)
 		: CDC()
 	{
 		ASSERT( pDC != NULL );
@@ -80,7 +80,7 @@ public:
 		FillBackground(crBackground);
 	}
 
-	~CMemDC()
+	~CMemoryDC()
 	{
 		Flush();
 		if (m_oldFont)
@@ -121,13 +121,13 @@ public:
 	}
 
 	// Allow usage as a pointer
-	CMemDC* operator->()
+	CMemoryDC* operator->()
 	{
 		return this;
 	}
 
 	// Allow usage as a pointer
-	operator CMemDC*()
+	operator CMemoryDC*()
 	{
 		return this;
 	}

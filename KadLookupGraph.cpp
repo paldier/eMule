@@ -147,7 +147,7 @@ void CKadLookupGraph::OnPaint()
 	if (rcClnt.IsRectEmpty())
 		return;
 
-	CMemDC dc(&pdc, rcClnt);
+	CMemoryDC dc(&pdc, rcClnt);
 	CPen* pOldPen = dc.SelectObject(&m_penAxis);
 	if (g_xpStyle.IsThemeActive() && g_xpStyle.IsAppThemed())
 	{

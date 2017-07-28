@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: tag.h,v 1.63 2003/03/02 13:35:59 t1mpy Exp $
+// $Id: tag.h,v 1.3 2008/01/09 22:56:41 stulleamgym Exp $
 
 // id3lib: a software library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
@@ -48,14 +48,14 @@ public:
   {
   public:
     virtual ID3_Frame*       GetNext()       = 0;
-	virtual ~Iterator() {};
+    virtual ~Iterator() { } //Klenotic - Added by id3lib-3.8.3-VC8_AddFrame_Crash_Fix patch.
   };
 
   class ConstIterator
   {
   public:
     virtual const ID3_Frame* GetNext()       = 0;
-	virtual ~ConstIterator() {};
+    virtual ~ConstIterator() { } //Klenotic - Added by id3lib-3.8.3-VC8_AddFrame_Crash_Fix patch.
   };
 
 public:
@@ -136,7 +136,7 @@ public:
 };
 
 // deprecated!
-int32 ID3_C_EXPORT ID3_IsTagHeader(const uchar header[ID3_TAGHEADERSIZE]);
+off_t ID3_C_EXPORT ID3_IsTagHeader(const uchar header[ID3_TAGHEADERSIZE]);
 
 
 #endif /* _ID3LIB_TAG_H_ */

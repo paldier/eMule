@@ -435,7 +435,7 @@ CemuleApp theApp(_T("eMule"));
 
 
 // Workaround for bugged 'AfxSocketTerm' (needed at least for MFC 7.0, 7.1, 8.0, 9.0)
-#if _MFC_VER==0x0700 || _MFC_VER==0x0710 || _MFC_VER==0x0800 || _MFC_VER==0x0900
+#if _MFC_VER==0x0700 || _MFC_VER==0x0710 || _MFC_VER==0x0800 || _MFC_VER==0x0900 || _MFC_VER==0x0A00 || _MFC_VER==0x0B00 || _MFC_VER==0x0E00
 void __cdecl __AfxSocketTerm()
 {
 #if defined(_AFXDLL) && (_MFC_VER==0x0700 || _MFC_VER==0x0710)
@@ -545,6 +545,7 @@ BOOL CemuleApp::InitInstance()
 	// XP SP3				6   0
 	// Vista SP1			6   16
 	InitCommonControls();
+#if _MSC_VER<1900
 	DWORD dwComCtrlMjr = 4;
 	DWORD dwComCtrlMin = 0;
 	AtlGetCommCtrlVersion(&dwComCtrlMjr, &dwComCtrlMin);
@@ -582,7 +583,7 @@ BOOL CemuleApp::InitInstance()
 			// No need to exit eMule, it will most likely work as expected but it will have some GUI glitches here and there..
 		}
 	}
-
+#endif
 	m_sizSmallSystemIcon.cx = GetSystemMetrics(SM_CXSMICON);
 	m_sizSmallSystemIcon.cy = GetSystemMetrics(SM_CYSMICON);
 	UpdateLargeIconSize();
@@ -600,7 +601,7 @@ BOOL CemuleApp::InitInstance()
 			return FALSE;
 		}
 	}
-#if _MFC_VER==0x0700 || _MFC_VER==0x0710 || _MFC_VER==0x0800 || _MFC_VER==0x0900
+#if _MFC_VER==0x0700 || _MFC_VER==0x0710 || _MFC_VER==0x0800 || _MFC_VER==0x0900 || _MFC_VER==0x0A00|| _MFC_VER==0x0B00 || _MFC_VER==0x0E00
 	atexit(__AfxSocketTerm);
 #else
 #error "You are using an MFC version which may require a special version of the above function!"

@@ -1,4 +1,4 @@
-// $Id: utils.cpp,v 1.26 2002/07/02 22:04:36 t1mpy Exp $
+// $Id: utils.cpp,v 1.4 2008/01/15 11:20:42 stulleamgym Exp $
 
 // id3lib: a C++ library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug

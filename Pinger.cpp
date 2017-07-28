@@ -129,7 +129,7 @@ static char THIS_FILE[] = __FILE__;
  *    "IP_PENDING (11255)"
  */
 #define MAX_ICMP_ERR_STRING  IP_STATUS_BASE + 22
-static const LPCTSTR aszSendEchoErr[] = {
+static LPCTSTR aszSendEchoErr[] = {
     _T("IP_STATUS_BASE (11000)"),
     _T("IP_BUF_TOO_SMALL (11001)"),
     _T("IP_DEST_NET_UNREACHABLE (11002)"),
@@ -155,7 +155,9 @@ static const LPCTSTR aszSendEchoErr[] = {
     _T("IP_UNLOAD (11022)")
 };
 
-Pinger::Pinger() {
+Pinger::Pinger()
+	: us(INVALID_SOCKET)
+{
     // udp start
     sockaddr_in sa;     // for UDP and raw sockets
 
@@ -316,7 +318,7 @@ PingStatus Pinger::PingUDP(uint32 lAddr, uint32 ttl, bool doLog) {
 		return returnValue;
 	} 
 
-	IPHeader* reply = (IPHeader*)bufICMP;
+	IPHeader* reply = reinterpret_cast<IPHeader *>(bufICMP);
 
 	bytes2read = 0;
 	int timeoutOpt = TIMEOUT;
@@ -360,16 +362,22 @@ PingStatus Pinger::PingUDP(uint32 lAddr, uint32 ttl, bool doLog) {
 		if (nRet==SOCKET_ERROR) { 
 			DWORD lastError = WSAGetLastError();
             PingStatus returnValue;
+            if(lastError == WSAETIMEDOUT) {
 			returnValue.success = false;
 			returnValue.delay = TIMEOUT;
+                returnValue.error = IP_REQ_TIMED_OUT;
+            } else {
 			returnValue.error = lastError;
+			    returnValue.success = false;
+			    returnValue.delay = TIMEOUT;
+            }
 			//if (toNowTimeOut < 3) toNowTimeOut++;
 			//	lastTimeOut = 3;
 			return returnValue;
 		} 
 
 		unsigned short header_len = reply->h_len * 4;
-		ICMPHeader* icmphdr = (ICMPHeader*)(bufICMP + header_len);
+		ICMPHeader* icmphdr = reinterpret_cast<ICMPHeader *>(bufICMP + header_len);
 		IN_ADDR stDestAddr;
 
 		stDestAddr.s_addr = reply->source_ip;
@@ -435,7 +443,7 @@ PingStatus Pinger::PingICMP(uint32 lAddr, uint32 ttl, bool doLog) {
     PingStatus returnValue;
 
     IN_ADDR stDestAddr;
-    char achRepData[sizeof(ICMPECHO) + BUFSIZE];
+    char achRepData[sizeof(icmp_echo_reply) + BUFSIZE];
 
     // Address is assumed to be ok
     stDestAddr.s_addr = lAddr;

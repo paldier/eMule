@@ -1,7 +1,12 @@
 #pragma once
 
 #include <uxtheme.h>
-#include <tmschema.h>
+#if _MSC_VER <= 1400       // WINSDK
+#include <Tmschema.h>
+#else
+#include "vssym32.h"
+#include "SchemaDef.h"
+#endif
 
 #pragma warning(disable:4100) // unreferenced formal parameter
 class CVisualStylesXP

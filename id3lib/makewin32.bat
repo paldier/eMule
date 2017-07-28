@@ -1,4 +1,4 @@
-REM $Id: makewin32.bat,v 1.2 2001/12/16 11:11:52 shadrack Exp $
+REM $Id: makewin32.bat,v 1.1 2007/11/12 21:32:41 pindakaasmod Exp $
 @echo off
 
 REM Comments, bugs go to johan@linkdata.se
