@@ -210,3 +210,56 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/exe/config/StoredSearches.met
+/exe/config/statistics.ini
+/exe/config/src_index.dat
+/exe/config/sharedfiles.dat
+/exe/config/shareddir.dat
+/exe/config/server_met.old
+/exe/config/server.met
+/exe/config/preferencesKad.dat
+/exe/config/preferences.ini
+/exe/config/preferences.dat
+/exe/config/nodes.dat
+/exe/config/load_index.dat
+/exe/config/known2_64.met
+/exe/config/known.met
+/exe/config/key_index.dat
+/exe/config/emfriends.met
+/exe/config/downloads.txt
+/exe/config/downloads.bak
+/exe/config/cryptkey.dat
+/exe/config/clients.met
+/exe/config/cancelled.met
+/exe/config/AC_ServerMetURLs.dat
+/exe/config/AC_SearchStrings.dat
+/exe/config/AC_IPFilterUpdateURLs.dat
+/exe/config/AC_BootstrapIPs.dat
+/exe/Temp/002.part.met.bak
+/exe/Temp/002.part.met
+/exe/Temp/002.part
+/exe/Temp/001.part.met.bak
+/exe/Temp/001.part.met
+/exe/Temp/001.part
+/x86 Release/zlib.lib
+/x86 Release/ResizableLib.lib
+/x86 Release/miniupnpc.lib
+/x86 Release/libpng.lib
+/x86 Release/id3lib.lib
+/x86 Release/cximage.lib
+/x86 Release/cryptlib.lib
+/x86 Release
+/x86 Debug/cryptlib.lib
+/x86 Debug/zlib.lib
+/x86 Debug/zlib.idb
+/x86 Debug/ResizableLib.lib
+/x86 Debug/ResizableLib.idb
+/x86 Debug/miniupnpc.lib
+/x86 Debug/miniupnpc.idb
+/x86 Debug/libpng.lib
+/x86 Debug/id3lib.lib
+/x86 Debug/id3lib.idb
+/x86 Debug/cximage.lib
+/x86 Debug
+/exe
+/Debug_vc9

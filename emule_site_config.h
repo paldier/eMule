@@ -4,10 +4,11 @@
 
 // By default, assume that we have all the SDKs which we need and enable all optional features.
 #define	HAVE_SAPI_H
+
+
 #define HAVE_QEDIT_H
 #define HAVE_WMSDK_H
-#define HAVE_WIN7_SDK_H
-#define HAVE_VISTA_SDK	
+
 
 //////////////////////////////////////////////////////////////////////////////
 // Visual Studio 2003
@@ -40,6 +41,9 @@
 // Uncomment the following line if you get compile errors due to missing 'wmsdk.h'
 //#undef HAVE_WMSDK_H
 
+#undef HAVE_WIN7_SDK_H //MORPH - Added by Stulle, We only use VS03 for compatibility builds (Win2k)
+#undef HAVE_VISTA_SDK //MORPH - Added by Stulle, We only use VS03 for compatibility builds (Win2k)
+
 #endif
 
 
@@ -49,7 +53,7 @@
 #if _MSC_VER==1400
 
 // NOTE: eMule can not get compiled with VS2005 out of the box because the SDK
-// which is shipped with VS2005 does not contain the ‘upnp.h?header file - and
+// which is shipped with VS2005 does not contain the ¡®upnp.h¡¯ header file - and
 // this feature is not yet optional for compiling eMule. Thus you need to install
 // an additional more recent SDK when compiling with VS2005.
 //
@@ -112,5 +116,115 @@
 #if !defined(HAVE_VISTA_SDK) && !defined(HAVE_WMF_SDK)
 #undef HAVE_WMSDK_H
 #endif//!defined(HAVE_VISTA_SDK) && !defined(HAVE_WMF_SDK)
+
+#endif
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Visual Studio 2010
+//////////////////////////////////////////////////////////////////////////////
+#if _MSC_VER==1600
+
+#define HAVE_VISTA_SDK		// VS2010 is already shipped with a Windows 7 SDK
+#define HAVE_WMF_SDK		// WMF SDK is part of the Vista SDK
+#define HAVE_DIRECTX_SDK	// DirectX 9(!) SDK
+
+// 'sapi.h' is shipped with VS2010 as part of the Windows 7 SDK
+#ifndef HAVE_VISTA_SDK
+#undef HAVE_SAPI_H
+#endif//HAVE_VISTA_SDK
+
+// 'qedit.h' file is shipped with VS2010 as part of the Windows 7 SDK, but it needs 
+// an additional file ('ddraw.h') which is only shipped with the DirectX 9 SDK.
+// You need to install the DirectX 9 SDK to enable this feature.
+#if !defined(HAVE_VISTA_SDK) || !defined(HAVE_DIRECTX_SDK)
+#undef HAVE_QEDIT_H
+#endif//!defined(HAVE_VISTA_SDK) || !defined(HAVE_DIRECTX_SDK)
+
+// 'wmsdk.h' is shipped with VS2010 as part of the Windows 7 SDK
+#if !defined(HAVE_VISTA_SDK) && !defined(HAVE_WMF_SDK)
+#undef HAVE_WMSDK_H
+#endif//!defined(HAVE_VISTA_SDK) && !defined(HAVE_WMF_SDK)
+
+#endif
+//////////////////////////////////////////////////////////////////////////////
+// Visual Studio 2012
+//////////////////////////////////////////////////////////////////////////////
+#if _MSC_VER==1700
+
+#define HAVE_WIN7_SDK_H		// VS2010 is already shipped with a Windows 7 SDK
+#define HAVE_WMF_SDK		// WMF SDK is part of the Vista SDK
+#define HAVE_DIRECTX_SDK	// DirectX 9(!) SDK
+
+// 'sapi.h' is shipped with VS2010 as part of the Windows 7 SDK
+#ifndef HAVE_WIN7_SDK_H
+#undef HAVE_SAPI_H
+#endif//HAVE_WIN7_SDK_H
+
+// 'qedit.h' file is shipped with VS2010 as part of the Windows 7 SDK, but it needs 
+// an additional file ('ddraw.h') which is only shipped with the DirectX 9 SDK.
+// You need to install the DirectX 9 SDK to enable this feature.
+#if !defined(HAVE_WIN7_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+#undef HAVE_QEDIT_H
+#endif//!defined(HAVE_WIN7_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+
+// 'wmsdk.h' is shipped with VS2010 as part of the Windows 7 SDK
+#if !defined(HAVE_WIN7_SDK_H) && !defined(HAVE_WMF_SDK)
+#undef HAVE_WMSDK_H
+#endif//!defined(HAVE_WIN7_SDK_H) && !defined(HAVE_WMF_SDK)
+
+#endif
+//////////////////////////////////////////////////////////////////////////////
+// Visual Studio 2015
+//////////////////////////////////////////////////////////////////////////////
+#if _MSC_VER==1900
+
+#define HAVE_WIN10_SDK_H		// VS2015 is already shipped with a Windows 10 SDK
+#define HAVE_WMF_SDK		// WMF SDK is part of the Vista SDK
+#define HAVE_DIRECTX_SDK	// DirectX 9(!) SDK
+
+// 'sapi.h' is shipped with VS2015 as part of the Windows 10 SDK
+#ifndef HAVE_WIN10_SDK_H
+#undef HAVE_SAPI_H
+#endif//HAVE_WIN10_SDK_H
+
+// 'qedit.h' file is shipped with VS2015 as part of the Windows 10 SDK, but it needs 
+// an additional file ('ddraw.h') which is only shipped with the DirectX 9 SDK.
+// You need to install the DirectX 9 SDK to enable this feature.
+#if !defined(HAVE_WIN10_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+#undef HAVE_QEDIT_H
+#endif//!defined(HAVE_WIN10_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+
+// 'wmsdk.h' is shipped with VS2015 as part of the Windows 10 SDK
+#if !defined(HAVE_WIN10_SDK_H) && !defined(HAVE_WMF_SDK)
+#undef HAVE_WMSDK_H
+#endif//!defined(HAVE_WIN10_SDK_H) && !defined(HAVE_WMF_SDK)
+#endif
+//////////////////////////////////////////////////////////////////////////////
+// Visual Studio 2017
+//////////////////////////////////////////////////////////////////////////////
+#if _MSC_VER > 1910
+
+#define HAVE_WIN10_SDK_H		// VS2015 is already shipped with a Windows 10 SDK
+#define HAVE_WMF_SDK		// WMF SDK is part of the Vista SDK
+#define HAVE_DIRECTX_SDK	// DirectX 9(!) SDK
+
+// 'sapi.h' is shipped with VS2015 as part of the Windows 10 SDK
+#ifndef HAVE_WIN10_SDK_H
+#undef HAVE_SAPI_H
+#endif//HAVE_WIN10_SDK_H
+
+// 'qedit.h' file is shipped with VS2015 as part of the Windows 10 SDK, but it needs 
+// an additional file ('ddraw.h') which is only shipped with the DirectX 9 SDK.
+// You need to install the DirectX 9 SDK to enable this feature.
+#if !defined(HAVE_WIN10_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+#undef HAVE_QEDIT_H
+#endif//!defined(HAVE_WIN10_SDK_H) || !defined(HAVE_DIRECTX_SDK)
+
+// 'wmsdk.h' is shipped with VS2015 as part of the Windows 10 SDK
+#if !defined(HAVE_WIN10_SDK_H) && !defined(HAVE_WMF_SDK)
+#undef HAVE_WMSDK_H
+#endif//!defined(HAVE_WIN10_SDK_H) && !defined(HAVE_WMF_SDK)
+
 
 #endif

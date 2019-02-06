@@ -33,10 +33,10 @@
 //IE 4.0				_WIN32_IE>=0x0400 
 //IE 3.0, 3.01, 3.02	_WIN32_IE>=0x0300 
 
-#if defined(HAVE_VISTA_SDK)
+#if defined(HAVE_WIN10_SDK_H)
 
 #ifndef WINVER
-#define WINVER 0x0502			// 0x0502 == Windows Server 2003, Windows XP (same as VS2005-MFC)
+#define WINVER 0x0A00			// 0x0502 == Windows Server 2003, Windows XP (same as VS2005-MFC)
 #endif
 
 #ifndef _WIN32_WINNT
@@ -44,14 +44,18 @@
 #endif
 
 #ifndef _WIN32_WINDOWS
-#define _WIN32_WINDOWS 0x0410	// 0x0410 == Windows 98
+#define _WIN32_WINDOWS 0x0A00	// 0x0410 == Windows 98
 #endif
 
 #ifndef _WIN32_IE
-#define _WIN32_IE 0x0560		// 0x0560 == Internet Explorer 5.6 -> Comctl32.dll v5.8
+#define _WIN32_IE 0x0A00		// 0x0560 == Internet Explorer 5.6 -> Comctl32.dll v5.8
 #endif
 
-#else//HAVE_VISTA_SDK
+#ifndef NTDDI_VERSION
+#define NTDDI_VERSION 0x0A000000
+#endif
+
+#else//HAVE_WIN7_SDK_H
 
 #ifndef WINVER
 #define WINVER 0x0400			// 0x0400 == Windows 98 and Windows NT 4.0 (because of '_WIN32_WINDOWS=0x0410')
@@ -69,7 +73,7 @@
 #define _WIN32_IE 0x0560		// 0x0560 == Internet Explorer 5.6 -> Comctl32.dll v5.8 (same as MFC internally used)
 #endif
 
-#endif//HAVE_VISTA_SDK
+#endif//HAVE_WIN7_SDK_H
 
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS	// Makes certain CString constructors explicit, preventing any unintentional conversions
 #define	_ATL_EX_CONVERSION_MACROS_ONLY		// Disable old ATL 3.0 string conversion macros
@@ -281,14 +285,4 @@ typedef CArray<CStringA> CStringAArray;
 typedef CStringArray CStringWArray;
 
 #define _TWINAPI(fname)	fname "W"
-
 extern "C" int __cdecl __ascii_stricmp(const char * dst, const char * src);
-
-inline BOOL afxIsWin95()
-{
-#if _MFC_VER>=0x0900
-	return FALSE;
-#else
-	return afxData.bWin95;
-#endif
-}

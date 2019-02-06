@@ -1210,16 +1210,6 @@ void CemuleDlg::ShowTransferRate(bool bForceAll)
 			_sntprintf(buffer2, _countof(buffer2), _T("eMule v%s (%s)\r\n%s"), theApp.m_strCurVersionLong, GetResString(IDS_DISCONNECTED), strTransferRate);
 			buffer2[_countof(buffer2) - 1] = _T('\0');
 		}
-
-		// Win98: '\r\n' is not displayed correctly in tooltip
-		if (afxIsWin95()) {
-			LPTSTR psz = buffer2;
-			while (*psz) {
-				if (*psz == _T('\r') || *psz == _T('\n'))
-					*psz = _T(' ');
-				psz++;
-			}
-		}
 		TraySetToolTip(buffer2);
 	}
 

@@ -13,8 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CC763AB0-5EBF-4A3F-884D-F5E2D12E12F3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -52,13 +51,9 @@
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>F:\work\lib\WMSDK\lib9;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <SourcePath>f:\work\lib\ATLServer\source;$(SourcePath)</SourcePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>F:\work\lib\ATLServer\include;$(WindowsSdkDir);$(IncludePath)</IncludePath>
     <IntDir>$(SolutionDir)\build\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,6 +107,7 @@
     <ClCompile Include="connecthostport.c" />
     <ClCompile Include="igd_desc_parse.c" />
     <ClCompile Include="minisoap.c" />
+    <ClCompile Include="minissdpc.c" />
     <ClCompile Include="miniupnpc.c" />
     <ClCompile Include="miniwget.c" />
     <ClCompile Include="minixml.c" />
@@ -119,6 +115,7 @@
     <ClCompile Include="receivedata.c" />
     <ClCompile Include="upnpc.c" />
     <ClCompile Include="upnpcommands.c" />
+    <ClCompile Include="upnpdev.c" />
     <ClCompile Include="upnperrors.c" />
     <ClCompile Include="upnpreplyparse.c" />
   </ItemGroup>
@@ -129,6 +126,7 @@
     <ClInclude Include="declspec.h" />
     <ClInclude Include="igd_desc_parse.h" />
     <ClInclude Include="minisoap.h" />
+    <ClInclude Include="minissdpc.h" />
     <ClInclude Include="miniupnpc.h" />
     <ClInclude Include="miniupnpcstrings.h" />
     <ClInclude Include="miniupnpctypes.h" />
@@ -137,6 +135,7 @@
     <ClInclude Include="portlistingparse.h" />
     <ClInclude Include="receivedata.h" />
     <ClInclude Include="upnpcommands.h" />
+    <ClInclude Include="upnpdev.h" />
     <ClInclude Include="upnperrors.h" />
     <ClInclude Include="upnpreplyparse.h" />
   </ItemGroup>

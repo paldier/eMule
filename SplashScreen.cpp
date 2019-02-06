@@ -110,7 +110,7 @@ void CSplashScreen::OnPaint()
 			LOGFONT lf = {0};
 			lf.lfHeight = 30;
 			lf.lfWeight = FW_BOLD;
-			lf.lfQuality = afxIsWin95() ? NONANTIALIASED_QUALITY : ANTIALIASED_QUALITY;
+			lf.lfQuality = ANTIALIASED_QUALITY;
 			_tcscpy(lf.lfFaceName, _T("Arial"));
 			CFont font;
 			font.CreateFontIndirect(&lf);
@@ -125,7 +125,7 @@ void CSplashScreen::OnPaint()
 
 			lf.lfHeight = 14;
 			lf.lfWeight = FW_NORMAL;
-			lf.lfQuality = afxIsWin95() ? NONANTIALIASED_QUALITY : ANTIALIASED_QUALITY;
+			lf.lfQuality = ANTIALIASED_QUALITY;
 			_tcscpy(lf.lfFaceName, _T("Arial"));
 			font.CreateFontIndirect(&lf);
 			pOldFont = dc.SelectObject(&font);

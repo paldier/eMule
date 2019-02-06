@@ -4,7 +4,7 @@
 
 # TARGTYPE "Win32 (x86) Static Library" 0x0104
 
-CFG=ResizableLib - Win32 Debug Static
+CFG=ResizableLib - Win32 Debug Static Unicode
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,14 +13,18 @@ CFG=ResizableLib - Win32 Debug Static
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "ResizableLib.mak" CFG="ResizableLib - Win32 Debug Static"
+!MESSAGE NMAKE /f "ResizableLib.mak" CFG="ResizableLib - Win32 Debug Static Unicode"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
 !MESSAGE "ResizableLib - Win32 Release" (based on "Win32 (x86) Static Library")
 !MESSAGE "ResizableLib - Win32 Debug" (based on "Win32 (x86) Static Library")
-!MESSAGE "ResizableLib - Win32 Debug Static" (based on "Win32 (x86) Static Library")
 !MESSAGE "ResizableLib - Win32 Release Static" (based on "Win32 (x86) Static Library")
+!MESSAGE "ResizableLib - Win32 Debug Static" (based on "Win32 (x86) Static Library")
+!MESSAGE "ResizableLib - Win32 Release Unicode" (based on "Win32 (x86) Static Library")
+!MESSAGE "ResizableLib - Win32 Debug Unicode" (based on "Win32 (x86) Static Library")
+!MESSAGE "ResizableLib - Win32 Release Static Unicode" (based on "Win32 (x86) Static Library")
+!MESSAGE "ResizableLib - Win32 Debug Static Unicode" (based on "Win32 (x86) Static Library")
 !MESSAGE 
 
 # Begin Project
@@ -76,35 +80,12 @@ LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
 
-!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Debug Static"
-
-# PROP BASE Use_MFC 2
-# PROP BASE Use_Debug_Libraries 1
-# PROP BASE Output_Dir "ResizableLib___Win32_Debug_Static"
-# PROP BASE Intermediate_Dir "ResizableLib___Win32_Debug_Static"
-# PROP BASE Target_Dir ""
-# PROP Use_MFC 1
-# PROP Use_Debug_Libraries 1
-# PROP Output_Dir "Debug_Static"
-# PROP Intermediate_Dir "Debug_Static"
-# PROP Target_Dir ""
-# ADD BASE CPP /nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
-# ADD BASE RSC /l 0x410 /d "_DEBUG" /d "_AFXDLL"
-# ADD RSC /l 0x410 /d "_DEBUG"
-BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo
-# ADD BSC32 /nologo
-LIB32=link.exe -lib
-# ADD BASE LIB32 /nologo
-# ADD LIB32 /nologo
-
 !ELSEIF  "$(CFG)" == "ResizableLib - Win32 Release Static"
 
 # PROP BASE Use_MFC 1
 # PROP BASE Use_Debug_Libraries 0
-# PROP BASE Output_Dir "ResizableLib___Win32_Release_Static"
-# PROP BASE Intermediate_Dir "ResizableLib___Win32_Release_Static"
+# PROP BASE Output_Dir "Release_Static"
+# PROP BASE Intermediate_Dir "Release_Static"
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 1
 # PROP Use_Debug_Libraries 0
@@ -122,17 +103,146 @@ LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
 
+!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Debug Static"
+
+# PROP BASE Use_MFC 1
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "Debug_Static"
+# PROP BASE Intermediate_Dir "Debug_Static"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 1
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir "Debug_Static"
+# PROP Intermediate_Dir "Debug_Static"
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
+# ADD BASE RSC /l 0x410 /d "_DEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x410 /d "_DEBUG"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LIB32=link.exe -lib
+# ADD BASE LIB32 /nologo
+# ADD LIB32 /nologo
+
+!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Release Unicode"
+
+# PROP BASE Use_MFC 2
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "Release_Unicode"
+# PROP BASE Intermediate_Dir "Release_Unicode"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 2
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "Release_Unicode"
+# PROP Intermediate_Dir "Release_Unicode"
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MD /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /D "_AFXDLL" /Yu"stdafx.h" /FD /c
+# ADD BASE RSC /l 0x410 /d "NDEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x410 /d "NDEBUG" /d "_AFXDLL"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LIB32=link.exe -lib
+# ADD BASE LIB32 /nologo
+# ADD LIB32 /nologo
+
+!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Debug Unicode"
+
+# PROP BASE Use_MFC 2
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "Debug_Unicode"
+# PROP BASE Intermediate_Dir "Debug_Unicode"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 2
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir "Debug_Unicode"
+# PROP Intermediate_Dir "Debug_Unicode"
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_UNICODE" /Yu"stdafx.h" /FD /GZ /c
+# ADD BASE RSC /l 0x410 /d "_DEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x410 /d "_DEBUG" /d "_AFXDLL"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LIB32=link.exe -lib
+# ADD BASE LIB32 /nologo
+# ADD LIB32 /nologo
+
+!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Release Static Unicode"
+
+# PROP BASE Use_MFC 1
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "Release_Static_Unicode"
+# PROP BASE Intermediate_Dir "Release_Static_Unicode"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 1
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "Release_Static_Unicode"
+# PROP Intermediate_Dir "Release_Static_Unicode"
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MT /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MT /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /Yu"stdafx.h" /FD /c
+# ADD BASE RSC /l 0x410 /d "NDEBUG"
+# ADD RSC /l 0x410 /d "NDEBUG"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LIB32=link.exe -lib
+# ADD BASE LIB32 /nologo
+# ADD LIB32 /nologo
+
+!ELSEIF  "$(CFG)" == "ResizableLib - Win32 Debug Static Unicode"
+
+# PROP BASE Use_MFC 1
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "Debug_Static_Unicode"
+# PROP BASE Intermediate_Dir "Debug_Static_Unicode"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 1
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir "Debug_Static_Unicode"
+# PROP Intermediate_Dir "Debug_Static_Unicode"
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /Yu"stdafx.h" /FD /GZ /c
+# ADD BASE RSC /l 0x410 /d "_DEBUG"
+# ADD RSC /l 0x410 /d "_DEBUG"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LIB32=link.exe -lib
+# ADD BASE LIB32 /nologo
+# ADD LIB32 /nologo
+
 !ENDIF 
 
 # Begin Target
 
 # Name "ResizableLib - Win32 Release"
 # Name "ResizableLib - Win32 Debug"
-# Name "ResizableLib - Win32 Debug Static"
 # Name "ResizableLib - Win32 Release Static"
+# Name "ResizableLib - Win32 Debug Static"
+# Name "ResizableLib - Win32 Release Unicode"
+# Name "ResizableLib - Win32 Debug Unicode"
+# Name "ResizableLib - Win32 Release Static Unicode"
+# Name "ResizableLib - Win32 Debug Static Unicode"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+
+SOURCE=.\ResizableComboBox.cpp
+# PROP Exclude_From_Build 1
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableComboLBox.cpp
+# PROP Exclude_From_Build 1
+# End Source File
 # Begin Source File
 
 SOURCE=.\ResizableDialog.cpp
@@ -167,12 +277,15 @@ SOURCE=.\ResizableMinMax.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\ResizableMsgSupport.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ResizablePage.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\ResizablePageEx.cpp
-# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -181,11 +294,26 @@ SOURCE=.\ResizableSheet.cpp
 # Begin Source File
 
 SOURCE=.\ResizableSheetEx.cpp
-# SUBTRACT CPP /YX /Yc /Yu
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableSheetState.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableSplitterWnd.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\ResizableState.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableVersion.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableWndState.cpp
 # End Source File
 # Begin Source File
 
@@ -196,6 +324,16 @@ SOURCE=.\StdAfx.cpp
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
+# Begin Source File
+
+SOURCE=.\ResizableComboBox.h
+# PROP Exclude_From_Build 1
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableComboLBox.h
+# PROP Exclude_From_Build 1
+# End Source File
 # Begin Source File
 
 SOURCE=.\ResizableDialog.h
@@ -234,10 +372,6 @@ SOURCE=.\ResizableMsgSupport.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ResizableMsgSupport.inl
-# End Source File
-# Begin Source File
-
 SOURCE=.\ResizablePage.h
 # End Source File
 # Begin Source File
@@ -254,23 +388,75 @@ SOURCE=.\ResizableSheetEx.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\ResizableSheetState.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableSplitterWnd.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\ResizableState.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableVersion.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ResizableWndState.h
 # End Source File
 # Begin Source File
 
 SOURCE=.\StdAfx.h
 # End Source File
 # End Group
-# Begin Group "Doc"
+# Begin Group "Documentation"
 
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\Docs\DoDoxygen.bat
+SOURCE=.\Docs\class.txt
 # End Source File
 # Begin Source File
 
-SOURCE=.\Docs\doxyfile.txt
+SOURCE=.\Docs\default.txt
+# End Source File
+# Begin Source File
+
+SOURCE=.\Doxyfile
+# End Source File
+# Begin Source File
+
+SOURCE=".\Docs\Doxyfile-include"
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\footer.html
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\function.txt
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\header.html
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\refman.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\struct.txt
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\stylesheet.css
+# End Source File
+# Begin Source File
+
+SOURCE=.\Docs\typedef.txt
 # End Source File
 # End Group
 # Begin Source File

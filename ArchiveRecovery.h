@@ -412,7 +412,7 @@ private:
 
 	static ACE_BlockFile *scanForAceFileHeader(CFile *input, archiveScannerThreadParams_s* aitp, UINT64 available);
 	static void writeAceBlock(CFile *input, CFile *output, ACE_BlockFile *block);
-	static void CArchiveRecovery::writeAceHeader(CFile *output, ACE_ARCHIVEHEADER* hdr);
+	static void writeAceHeader(CFile *output, ACE_ARCHIVEHEADER* hdr);
 
 	static bool CopyFile(CPartFile *partFile, CTypedPtrList<CPtrList, Gap_Struct*> *filled, CString tempFileName);
 	static void DeleteMemory(ThreadParam *tp);

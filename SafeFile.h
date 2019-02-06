@@ -1,4 +1,4 @@
-//this file is part of eMule
+﻿//this file is part of eMule
 //Copyright (C)2002-2008 Merkur ( strEmail.Format("%s@%s", "devteam", "emule-project.net") / http://www.emule-project.net )
 //
 //This program is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #pragma once
 
-namespace Kademlia{
+namespace Kademlia {
 	class CUInt128;
 };
 
@@ -28,7 +28,7 @@ enum EUtf8Str
 	utf8strOptBOM,		// convert Unicode string to BOM'd UTF-8 string (non ASCII data in string)
 						// --or--
 						// convert Unicode string to locale dependent MBCS (only ASCII data in string)
-	utf8strRaw			// convert Unicode string to UTF-8 (without any header)
+						utf8strRaw			// convert Unicode string to UTF-8 (without any header)
 };
 
 
@@ -74,7 +74,7 @@ class CSafeFile : public CFile, public CFileDataIO
 {
 public:
 	CSafeFile() {}
-	CSafeFile::CSafeFile(LPCTSTR lpszFileName, UINT nOpenFlags)
+	CSafeFile(LPCTSTR lpszFileName, UINT nOpenFlags)
 		: CFile(lpszFileName, nOpenFlags) {}
 
 	virtual UINT Read(void* lpBuf, UINT nCount);
@@ -95,7 +95,7 @@ public:
 		: CMemFile(nGrowBytes) {}
 	//CSafeMemFile::CSafeMemFile(BYTE* lpBuffer, UINT nBufferSize, UINT nGrowBytes = 0)
 	//	: CMemFile(lpBuffer, nBufferSize, nGrowBytes) {}
-	CSafeMemFile::CSafeMemFile(const BYTE* lpBuffer, UINT nBufferSize)
+	CSafeMemFile(const BYTE* lpBuffer, UINT nBufferSize)
 		: CMemFile(const_cast<BYTE*>(lpBuffer), nBufferSize, 0) {}
 
 	const BYTE* GetBuffer() const { return m_lpBuffer; }
@@ -129,7 +129,7 @@ class CSafeBufferedFile : public CStdioFile, public CFileDataIO
 {
 public:
 	CSafeBufferedFile() {}
-	CSafeBufferedFile::CSafeBufferedFile(LPCTSTR lpszFileName, UINT nOpenFlags)
+	CSafeBufferedFile(LPCTSTR lpszFileName, UINT nOpenFlags)
 		: CStdioFile(lpszFileName, nOpenFlags) {}
 
 	virtual UINT Read(void* lpBuf, UINT nCount);

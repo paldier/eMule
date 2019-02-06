@@ -489,7 +489,9 @@ END_MESSAGE_MAP()
 int CSharedFileDetailsModelessSheet::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
 	// skip CResizableSheet::OnCreate because we don't the styles and stuff which are set there
-	CreateSizeGrip(FALSE); // create grip but dont show it
+//>>> ResizeableLib v1.3 -> v1.4
+//	CreateSizeGrip(FALSE); // create grip but dont show it<- Do not do this with new library! -fox88
+//<<< ResizeableLib v1.3 -> v1.4	
 	return CPropertySheet::OnCreate(lpCreateStruct);
 }
 

@@ -13,7 +13,7 @@ public:
 	void KillThread();
 	void StartThread();
 	CCreditsDlg(CWnd* pParent = NULL);   // standard constructor
-	CCreditsDlg::~CCreditsDlg();
+	~CCreditsDlg();
 
 	CClientDC*	m_pDC;
 	CRect		m_rectScreen;

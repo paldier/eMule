@@ -106,7 +106,7 @@ private:
 		UINT		nFormat;	// Text alignment
 		DWORD		dwFlags;	// Bit 0	- Item is disabled
 
-		_STRUCT_LBDATA::_STRUCT_LBDATA()
+		_STRUCT_LBDATA()
 		{::ZeroMemory(this, sizeof(_STRUCT_LBDATA));}
 	} STRUCT_LBDATA;
 #pragma pack()

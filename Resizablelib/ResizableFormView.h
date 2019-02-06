@@ -9,13 +9,14 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2000-2002 by Paolo Messina
-// (http://www.geocities.com/ppescher - ppescher@yahoo.com)
+// This file is part of ResizableLib
+// https://github.com/ppescher/resizablelib
 //
-// The contents of this file are subject to the Artistic License (the "License").
-// You may not use this file except in compliance with the License. 
-// You may obtain a copy of the License at:
-// http://www.opensource.org/licenses/artistic-license.html
+// Copyright (C) 2000-2015 by Paolo Messina
+// mailto:ppescher@hotmail.com
+//
+// The contents of this file are subject to the Artistic License 2.0
+// http://opensource.org/licenses/Artistic-2.0
 //
 // If you find this code useful, credits would be nice!
 //
@@ -28,9 +29,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // CResizableFormView form view
 
-#ifndef __AFXEXT_H__
 #include <afxext.h>
-#endif
 
 class CResizableFormView : public CFormView, public CResizableLayout,
 						 public CResizableGrip, public CResizableMinMax
@@ -39,14 +38,12 @@ class CResizableFormView : public CFormView, public CResizableLayout,
 
 // Construction
 protected:      // must derive your own class
-	CResizableFormView(UINT nIDTemplate);
-	CResizableFormView(LPCTSTR lpszTemplateName);
+	explicit CResizableFormView(UINT nIDTemplate);
+	explicit CResizableFormView(LPCTSTR lpszTemplateName);
 	virtual ~CResizableFormView();
 
 private:
 	void PrivateConstruct();
-	
-	BOOL m_bInitDone;		// if all internal vars initialized
 
 	// support for temporarily hiding the grip
 	DWORD m_dwGripTempState;
@@ -60,12 +57,12 @@ private:
 // called from base class
 protected:
 
-	virtual void GetTotalClientRect(LPRECT lpRect);
+	virtual void GetTotalClientRect(LPRECT lpRect) const;
 
-	virtual CWnd* GetResizableWnd()
+	virtual CWnd* GetResizableWnd() const
 	{
 		// make the layout know its parent window
-		return this;
+		return CWnd::FromHandle(m_hWnd);
 	};
 
 
@@ -79,7 +76,8 @@ public:
 public:
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CResizableFormView)
-	virtual void OnInitialUpdate();
+	protected:
+	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	//}}AFX_VIRTUAL
 
 // Implementation
@@ -94,9 +92,10 @@ protected:
 	//{{AFX_MSG(CResizableFormView)
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
 	afx_msg void OnDestroy();
+	virtual BOOL OnInitDialog();
+	afx_msg BOOL OnNcCreate(LPCREATESTRUCT lpCreateStruct);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

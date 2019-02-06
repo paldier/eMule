@@ -105,9 +105,6 @@ bool InitAttachedBrowseButton(HWND hwndButton, HICON &ricoBrowse)
 	// Showing an icon button works for all Windows versions *except* Windows XP w/ active styles
 	if (theApp.IsXPThemeActive())
 		return false;
-	// However, do not stress system resources for non-NT systems.
-	if (afxIsWin95())
-		return false;
 
 	if (ricoBrowse == NULL)
 	{

@@ -381,7 +381,7 @@ BOOL CFileInfoDialog::OnInitDialog()
 		AddAnchor(IDC_FILESIZE, TOP_LEFT, TOP_RIGHT);
 		AddAnchor(IDC_FULL_FILE_INFO, TOP_LEFT, BOTTOM_RIGHT);
 
-		m_fi.LimitText(afxIsWin95() ? 0xFFFF : 0x7FFFFFFF);
+		m_fi.LimitText(0x7FFFFFFF);
 		m_fi.SendMessage(EM_SETMARGINS, EC_LEFTMARGIN | EC_RIGHTMARGIN, MAKELONG(3, 3));
 		m_fi.SetAutoURLDetect();
 		m_fi.SetEventMask(m_fi.GetEventMask() | ENM_LINK);
@@ -531,7 +531,7 @@ int CGetMediaInfoThread::Run()
 	{
 		CRichEditStream re;
 		re.Attach(hwndRE);
-		re.LimitText(afxIsWin95() ? 0xFFFF : 0x7FFFFFFF);
+		re.LimitText(0x7FFFFFFF);
 		PARAFORMAT pf = {0};
 		pf.cbSize = sizeof pf;
 		if (re.GetParaFormat(pf)) {

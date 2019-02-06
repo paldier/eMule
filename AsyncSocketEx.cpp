@@ -453,7 +453,7 @@ public:
 #endif//!NO_USE_CLIENT_TCP_CATCH_ALL_HANDLER
 	}
 
-	HWND CAsyncSocketExHelperWindow::GetHwnd()
+	HWND GetHwnd()
 	{
 		return m_hWnd;
 	}

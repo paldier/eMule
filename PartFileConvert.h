@@ -25,7 +25,7 @@ class CPartFileConvert
 public:
 	static int	ScanFolderToAdd(CString folder,bool deletesource=false);
 	static void ConvertToeMule(CString folder,bool deletesource=false);
-	static void CPartFileConvert::StartThread();
+	static void StartThread();
 	static void ShowGUI();
 	static void UpdateGUI(float percent,CString text, bool fullinfo=false);	// current file information
 	static void UpdateGUI(ConvertJob* job); // listcontrol update

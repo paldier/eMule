@@ -70,8 +70,7 @@
     <ProjectGuid>{A5743026-DE7A-4C3D-86EA-46D6B6847F14}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <ProjectName>ResizableLib</ProjectName>
-    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug100|Win32'" Label="Configuration">
@@ -107,7 +106,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseOfMfc>Static</UseOfMfc>
+    <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
@@ -249,17 +248,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <SourcePath>f:\work\lib\ATLServer\source;$(SourcePath)</SourcePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>F:\work\lib\ATLServer\include;f:\work\WTL\Include;$(WindowsSdkDir);$(IncludePath)</IncludePath>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -268,8 +262,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>.\Release/ResizableLib.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
-      <ObjectFileName>.\Release/</ObjectFileName>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)..\x86 $(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -279,7 +273,7 @@
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <CompileAs>CompileAsCpp</CompileAs>
+      <CompileAs>Default</CompileAs>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_AFXDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -299,8 +293,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>.\Debug/ResizableLib.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
-      <ObjectFileName>.\Debug/</ObjectFileName>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(ProjectDir)..\x86 $(Configuration)\$(ProjectName).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -510,6 +504,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ResizableComboBox.cpp" />
+    <ClCompile Include="ResizableComboLBox.cpp" />
     <ClCompile Include="ResizableDialog.cpp" />
     <ClCompile Include="ResizableFormView.cpp" />
     <ClCompile Include="ResizableFrame.cpp" />
@@ -518,6 +514,7 @@
     <ClCompile Include="ResizableMDIChild.cpp" />
     <ClCompile Include="ResizableMDIFrame.cpp" />
     <ClCompile Include="ResizableMinMax.cpp" />
+    <ClCompile Include="ResizableMsgSupport.cpp" />
     <ClCompile Include="ResizablePage.cpp" />
     <ClCompile Include="ResizablePageEx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -552,7 +549,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug100|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ResizableSheetState.cpp" />
+    <ClCompile Include="ResizableSplitterWnd.cpp" />
     <ClCompile Include="ResizableState.cpp" />
+    <ClCompile Include="ResizableVersion.cpp" />
+    <ClCompile Include="ResizableWndState.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -564,6 +565,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ResizableComboBox.h" />
+    <ClInclude Include="ResizableComboLBox.h" />
     <ClInclude Include="ResizableDialog.h" />
     <ClInclude Include="ResizableFormView.h" />
     <ClInclude Include="ResizableFrame.h" />
@@ -577,7 +580,11 @@
     <ClInclude Include="ResizablePageEx.h" />
     <ClInclude Include="ResizableSheet.h" />
     <ClInclude Include="ResizableSheetEx.h" />
+    <ClInclude Include="ResizableSheetState.h" />
+    <ClInclude Include="ResizableSplitterWnd.h" />
     <ClInclude Include="ResizableState.h" />
+    <ClInclude Include="ResizableVersion.h" />
+    <ClInclude Include="ResizableWndState.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <ItemGroup>

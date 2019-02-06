@@ -83,10 +83,7 @@ void CHTRichEditCtrl::Init(LPCTSTR pszTitle, LPCTSTR pszSkinKey)
 
 	VERIFY( SendMessage(EM_SETUNDOLIMIT, 0, 0) == 0 );
 	int iMaxLogBuff = thePrefs.GetMaxLogBuff();
-	if (afxIsWin95())
-		LimitText(iMaxLogBuff > 0xFFFF ? 0xFFFF : iMaxLogBuff);
-	else
-		LimitText(iMaxLogBuff ? iMaxLogBuff : 128*1024);
+	LimitText(iMaxLogBuff ? iMaxLogBuff : 128*1024);
 	m_iLimitText = GetLimitText();
 
 	VERIFY( GetSelectionCharFormat(m_cfDefault) );
@@ -339,26 +336,12 @@ void CHTRichEditCtrl::ScrollToLastLine(bool bForceLastLineAtBottom)
 
 	// WM_VSCROLL does not work correctly under Win98 (or older version of comctl.dll)
 	SendMessage(WM_VSCROLL, SB_BOTTOM);
-	if (afxIsWin95())
-	{
-		// older version of comctl.dll seem to need this to properly update the display
-		int iPos = GetScrollPos(SB_VERT);
-		SendMessage(WM_VSCROLL, MAKELONG(SB_THUMBPOSITION, iPos));
-		SendMessage(WM_VSCROLL, SB_ENDSCROLL);
-	}
 }
 
 void CHTRichEditCtrl::ScrollToFirstLine()
 {
 	// WM_VSCROLL does not work correctly under Win98 (or older version of comctl.dll)
 	SendMessage(WM_VSCROLL, SB_TOP);
-	if (afxIsWin95())
-	{
-		// older version of comctl.dll seem to need this to properly update the display
-		int iPos = GetScrollPos(SB_VERT);
-		SendMessage(WM_VSCROLL, MAKELONG(SB_THUMBPOSITION, iPos));
-		SendMessage(WM_VSCROLL, SB_ENDSCROLL);
-	}
 }
 
 void CHTRichEditCtrl::AddString(int nPos, LPCTSTR pszString, bool bLink, COLORREF cr, COLORREF bk, DWORD mask)

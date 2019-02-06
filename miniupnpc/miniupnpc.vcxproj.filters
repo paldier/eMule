@@ -51,6 +51,12 @@
     <ClCompile Include="upnpc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="upnpdev.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="minissdpc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bsdqueue.h">
@@ -99,6 +105,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="receivedata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minissdpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="upnpdev.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
